@@ -8,35 +8,52 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* AEGIS Planetary Design System - Earth's Deep Consciousness */
+    --background: 220 26% 4%;
+    --foreground: 180 20% 92%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 20% 8%;
+    --card-foreground: 180 15% 88%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 25% 6%;
+    --popover-foreground: 180 20% 90%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: Deep Ocean - The Earth's Life Source */
+    --primary: 195 85% 12%;
+    --primary-foreground: 180 30% 95%;
+    --primary-glow: 195 100% 35%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary: Forest Heart - Living Biomass */
+    --secondary: 140 60% 15%;
+    --secondary-foreground: 140 25% 85%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted: Soil Depths - Foundation of Life */
+    --muted: 30 25% 12%;
+    --muted-foreground: 30 15% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent: Aurora Shimmer - Magnetic Field Protection */
+    --accent: 280 80% 25%;
+    --accent-foreground: 280 20% 90%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive: Volcanic Core - Transformative Power */
+    --destructive: 15 90% 45%;
+    --destructive-foreground: 15 20% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 15% 18%;
+    --input: 220 20% 12%;
+    --ring: 195 85% 35%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* AEGIS Sacred Geometry & Planetary Animations */
+    --gradient-ocean: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-forest: linear-gradient(45deg, hsl(var(--secondary)), hsl(140 70% 25%));
+    --gradient-aurora: linear-gradient(90deg, hsl(var(--accent)), hsl(260 90% 35%), hsl(320 80% 40%));
+    --gradient-cosmos: radial-gradient(circle, hsl(var(--accent)) 0%, hsl(var(--background)) 70%);
+    --shadow-ethereal: 0 8px 32px hsl(var(--primary-glow) / 0.3);
+    --shadow-sacred: 0 0 40px hsl(var(--accent) / 0.4);
+    --transition-earth: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --pulse-biosignal: 0 0 20px hsl(var(--primary-glow) / 0.6);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +117,71 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
   }
+}
+
+@layer components {
+  /* AEGIS Sacred UI Components */
+  .aegis-card {
+    @apply bg-card border border-border rounded-lg p-6 backdrop-blur-sm;
+    box-shadow: var(--shadow-ethereal);
+    transition: var(--transition-earth);
+  }
+
+  .aegis-card:hover {
+    box-shadow: var(--shadow-sacred);
+    transform: translateY(-2px);
+  }
+
+  .biosignal-pulse {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  .neural-network {
+    background: var(--gradient-ocean);
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+
+  .cosmic-orb {
+    background: var(--gradient-cosmos);
+    animation: cosmic-rotation 20s linear infinite;
+  }
+
+  .earth-gradient {
+    background: var(--gradient-forest);
+  }
+
+  .aurora-flow {
+    background: var(--gradient-aurora);
+    background-size: 200% 100%;
+    animation: aurora-dance 8s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-shadow-soft {
+    text-shadow: 0 2px 8px hsl(var(--background) / 0.5);
+  }
+
+  .transition-earth {
+    transition: var(--transition-earth);
+  }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: var(--pulse-biosignal); }
+  100% { box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.8), 0 0 60px hsl(var(--accent) / 0.4); }
+}
+
+@keyframes cosmic-rotation {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes aurora-dance {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
